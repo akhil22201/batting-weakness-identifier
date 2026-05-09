@@ -28,13 +28,13 @@ Advanced AI-powered cricket batting technique analysis using computer vision and
 
 1. **Clone the repository**
 
-git clone https://github.com/akhil22201/batting-weakness-identifier.git
+     git clone https://github.com/akhil22201/batting-weakness-identifier.git
 
-cd cricket-batting-analyzer
+     cd cricket-batting-analyzer
 
 3. **Create virtual environment**
 
--python -m venv cricket-env
+   -python -m venv cricket-env
 
 
 5. **Activate virtual environment**
