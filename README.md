@@ -1,155 +1,177 @@
-# batting-weakness-identifier
-Advanced AI-powered cricket batting technique analysis using computer vision and deep learning.
+# Batting Weakness Identifier for Amateur Cricketers
+
+## Overview
+
+The **Batting Weakness Identifier for Amateur Cricketers** is an AI-powered cricket batting analysis system developed using computer vision and deep learning techniques. The application analyzes batting videos to evaluate player posture, stance, balance, alignment, and shot execution. It provides automated performance scoring, visual overlays, and actionable coaching recommendations to help players improve their batting technique.
+
+---
 
 ## Features
 
-- **Real-time Pose Analysis**: MediaPipe-based 33-point body landmark detection
-- **Performance Scoring**: Comprehensive 0-100 scoring system with detailed grading
-- **Technical Issue Detection**: Identifies stance, alignment, balance, and form issues
-- **Video Annotations**: Annotated output videos with real-time analysis overlays
-- **Professional Recommendations**: Actionable coaching tips for technique improvement
+- Real-time cricket batting pose analysis
+- MediaPipe-based 33-point body landmark detection
+- Automated performance scoring system
+- Detection of stance, balance, and alignment issues
+- Annotated output videos with visual overlays
+- AI-generated coaching recommendations
+- Browser-based interactive interface
+
+---
 
 ## Tech Stack
 
-- **Backend**: FastAPI, Python 3.12
-- **Computer Vision**: MediaPipe, OpenCV, YOLOv8
-- **Deep Learning**: Ultralytics YOLO, TensorFlow Lite
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+**Languages:** Python 3.12, HTML5, CSS3, JavaScript  
+
+**Frameworks & Tools:** FastAPI, MediaPipe, OpenCV, YOLOv8, TensorFlow Lite  
+
+**Concepts:** Computer Vision, Pose Estimation, Deep Learning, Video Analysis
+
+---
 
 ## Installation
 
-### Prerequisites
+### Step 1: Clone the Repository
 
-- Python 3.12+
-- pip
-- Git
-
-### Setup
-
-1. **Clone the repository**
-
-     git clone https://github.com/akhil22201/batting-weakness-identifier.git
-
-     cd cricket-batting-analyzer
-
-3. **Create virtual environment**
-
-   -python -m venv cricket-env
-
-
-5. **Activate virtual environment**
-- Windows: `cricket-env\Scripts\activate`
-- Linux/Mac: `source cricket-env/bin/activate`
-
-4. **Install dependencies**
-pip install -r requirements.txt
-
-
-5. **Download YOLO model** (if not included)
-The YOLOv8 nano model will auto-download on first run
-Or manually download from: https://github.com/ultralytics/assets/releases
-
-
-## Usage
-
-### Run the application
-
-python app.py
-
-
-Or using uvicorn directly:
-uvicorn app:app --host 0.0.0.0 --port 8000 --reload
-
-
-### Access the application
-
-- **Web Interface**: http://localhost:8000
-- **API Documentation**: http://localhost:8000/docs
-- **Health Check**: http://localhost:8000/health
-
-### Mobile Access (Same Network)
-
-1. Find your computer's IP address: `ipconfig` (Windows) or `ifconfig` (Linux/Mac)
-2. Access from phone: `http://YOUR_IP:8000`
-
-## Project Structure
-
-```cricket-batting-analyzer/
-├── backend/
-│ ├── pose_analysis/
-│ │ ├── init.py
-│ │ ├── cricket_analyzer.py
-│ │ ├── pose_estimator.py
-│ │ └── pose_utils.py
-│ └── video_processing/
-│ ├── init.py
-│ └── smart_processor.py
-├── frontend/
-│ └── index.html
-├── uploads/ # Temporary upload storage
-├── processed/ # Processed video output
-├── app.py # Main FastAPI application
-├── requirements.txt
-├── .gitignore
-└── README.md
+```bash
+git clone https://github.com/akhil22201/batting-weakness-identifier.git
+cd batting-weakness-identifier
 ```
 
+---
+
+### Step 2: Create Virtual Environment
+
+```bash
+python -m venv cricket-env
+```
+
+---
+
+### Step 3: Activate Virtual Environment
+
+#### Windows
+
+```bash
+cricket-env\Scripts\activate
+```
+
+#### Linux/Mac
+
+```bash
+source cricket-env/bin/activate
+```
+
+---
+
+### Step 4: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### Step 5: Download YOLO Model
+
+The YOLOv8 nano model will automatically download during the first run.
+
+---
+
+## Running the Application
+
+### Run using Python
+
+```bash
+python app.py
+```
+
+---
+
+### Run using Uvicorn
+
+```bash
+uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+```
+
+---
+
+## Access the Application
+
+- Web Interface: `http://localhost:8000`
+- API Documentation: `http://localhost:8000/docs`
+- Health Check Endpoint: `http://localhost:8000/health`
+
+---
+
+## Project Workflow
+
+1. Video Upload  
+2. Pose Detection  
+3. Landmark Extraction  
+4. Movement Analysis  
+5. Performance Scoring  
+6. Technique Recommendation Generation
+
+---
 
 ## API Endpoints
 
-- `POST /analyze` - Upload and analyze cricket batting video
-- `GET /processed/{filename}` - Retrieve processed video
-- `GET /health` - Health check endpoint
-- `GET /stats` - Processing statistics
+- `POST /analyze` → Upload and analyze batting videos
+- `GET /processed/{filename}` → Retrieve processed videos
+- `GET /health` → Health check endpoint
+- `GET /stats` → Analysis statistics
 
-## Configuration
-
-Edit `config.py` (if created) to adjust:
-- Frame skip rate (default: 2)
-- Video codec settings
-- Analysis thresholds
-- Server host/port
+---
 
 ## Performance Optimization
 
-- **Frame Skip**: Processes every 2nd frame by default for faster analysis
-- **Codec**: Uses H.264 (avc1) for browser-compatible videos
-- **GPU Support**: Automatically uses GPU if available for YOLO detection
+- Frame skipping for faster processing
+- GPU acceleration support for YOLO detection
+- Browser-compatible H.264 video output
 
-## Troubleshooting
+---
 
-### Video not playing in browser
-- Ensure H.264 codec is available
-- Install FFmpeg for better codec support
+## Future Improvements
 
-### Low performance scores
-- Adjust thresholds in `cricket_analyzer.py`
-- Check camera angle (side view recommended)
+- Real-time live camera analysis
+- Advanced shot classification
+- Cloud deployment support
+- Player performance history tracking
 
-### YOLO warnings
-- Non-critical warnings about PyTorch 2.6+ security
-- Analysis works without YOLO (pose detection only)
+---
 
-## Contributing
+## Project Structure
 
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+```bash
+batting-weakness-identifier/
+│
+├── backend/
+├── frontend/
+├── uploads/
+├── processed/
+├── app.py
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+---
 
 ## License
 
-MIT License - feel free to use for personal or commercial projects
+This project is licensed under the MIT License.
+
+---
+
+## Acknowledgements
+
+- MediaPipe
+- OpenCV
+- Ultralytics YOLO
+- FastAPI
+
+---
 
 ## Author
 
 Akhil
-
-## Acknowledgments
-
-- MediaPipe for pose estimation
-- Ultralytics for YOLO
-- FastAPI framework
-- Cricket coaching community for technique insights
